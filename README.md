@@ -16,6 +16,8 @@ The complete documentation of this sample can be found [in the documentation dir
 
 ## License
 
+This sample is distributed under the _MIT License_:
+
     The MIT License (MIT)
 
     Copyright (c) 2016 Smart AdServer
@@ -37,3 +39,5 @@ The complete documentation of this sample can be found [in the documentation dir
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
+It embeds _PlayServicesResolver_ by _Google_, distributed under _Apache License Version 2.0_.
