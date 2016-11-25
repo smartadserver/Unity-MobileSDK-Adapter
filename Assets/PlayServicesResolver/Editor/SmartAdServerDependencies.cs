@@ -26,7 +26,7 @@ public static class SmartAdServerDependencies
     {
         PlayServicesSupport svcSupport = PlayServicesSupport.CreateInstance(PluginName, EditorPrefs.GetString("AndroidSdkRoot"), "ProjectSettings");
 		svcSupport.DependOn("com.google.android.gms", "play-services-ads", "9.8.0");
-		svcSupport.DependOn("com.google.android.gms", "play-services-ads", "9.8.0");
+		svcSupport.DependOn("com.google.android.gms", "play-services-location", "9.8.0");
     }
 
 }
