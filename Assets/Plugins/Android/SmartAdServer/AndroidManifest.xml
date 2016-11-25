@@ -4,7 +4,7 @@
 <!-- You can use it to declare additional permissions for your app if needed. -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.smartadserver.unity.library" android:versionName="1.0.0" android:versionCode="1">
-  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="22" />
+  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="25" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
   <uses-permission android:name="android.permission.INTERNET"></uses-permission>
   <application>
