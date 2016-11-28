@@ -109,6 +109,14 @@ Older _iOS_SDKs have not been tested with this wrapper so it is not advised to u
 
 Older _Android_ SDKs will not be able to render some advanced formats (like some video formats) due to some incompatible components used: **you cannot use them in Unity**.
 
+### How are _Google Play Services_ integrated into the sample?
+
+_Google Play Services_ are included into this sample and used mainly for geolocation and advertising ID retrieval.
+
+AAR files in _Assets/Plugins/Android_ are included automatically in the project using _PlayServicesResolver_ from Google. Exact services and versions required by the SDK are declared in the file _Assets/PlayServicesResolver/Editor/SmartAdServerDependencies.cs_. Dependencies are then automatically downloaded in the project as soon as the current build platform is set to _Android_ (if the automatic import is on, otherwise you need to right-click _PlayServicesResolver_ then _Google Play Services_ > _Resolve Client JAR_).
+
+Automatic _Play Services_ resolution will only works if all the required _Android SDK_ dependencies are installed on your computer (using _SDK Manager_).
+
 ## 4. Known issues / Improvements needed
 
 * **[ISSUE / Android]** HTML ads containing hardware accelerated components (like the ```<video/>``` tag) might not work properly.
