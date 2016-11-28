@@ -115,7 +115,7 @@ _Google Play Services_ are included into this sample and used mainly for geoloca
 
 AAR files in _Assets/Plugins/Android_ are included automatically in the project using _PlayServicesResolver_ from Google. Exact services and versions required by the SDK are declared in the file _Assets/PlayServicesResolver/Editor/SmartAdServerDependencies.cs_. Dependencies are then automatically downloaded in the project as soon as the current build platform is set to _Android_ (if the automatic import is on, otherwise you need to right-click _PlayServicesResolver_ then _Google Play Services_ > _Resolve Client JAR_).
 
-Automatic _Play Services_ resolution will only works if all the required _Android SDK_ dependencies are installed on your computer (using _SDK Manager_).
+Automatic _Play Services_ resolution will only work if all the required _Android SDK_ dependencies are installed on your computer (using _SDK Manager_).
 
 ## 4. Known issues / Improvements needed
 
