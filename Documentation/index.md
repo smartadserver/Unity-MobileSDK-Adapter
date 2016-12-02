@@ -14,7 +14,9 @@ When the project is run through the _Unity Editor_ or as any build target except
 
 ## 2. Integration
 
-_TODO_
+If you you are looking for help to integrate the current _Unity Adapter_ into your project or to load and display an ad, you can find more informations into the integration guide.
+
+> [Integration guide](integration.md)
 
 ## 3. Implementation
 
