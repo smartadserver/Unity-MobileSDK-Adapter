@@ -26,12 +26,14 @@ The base object used to handle ads is the ```AdView``` class. However you will n
 
 ### Banner
 
-A ```BannerView``` needs to be loaded and then displayed.
+A ```BannerView``` needs to be instantiated, loaded and then displayed.
+
+    _bannerView = new BannerView ();
 
 The loading of an ad requires an ```AdConfig``` object that can be instantiated with a _BaseURL_ / _SiteID_ / _FormatID_ / _PageID_ / _Targeting_:
 
     // Create an AdConfig object
-    AdConfig adConfig = new AdConfig ("http://mobile.smartadserver.com", 57477, "(image_interstitial)", 12167, true, "");
+    AdConfig adConfig = new AdConfig ("http://mobile.smartadserver.com", 57477, "(image_banner)", 15140, true, "");
 
 When the ```AdConfig``` object is created, the banner can be loaded and events can be registered to know when the ad is available or if the ad loading has failed:
 
@@ -51,4 +53,31 @@ A banner can only be displayed at the **top** or the **bottom** of the screen at
 
 ### Interstitial
 
-_TODO_
+A ```InterstitialView``` needs to be instantiated and loaded.
+
+    _interstitialView = new InterstitialView ();
+
+The loading of an ad requires an ```AdConfig``` object that can be instantiated with a _BaseURL_ / _SiteID_ / _FormatID_ / _PageID_ / _Targeting_:
+
+    // Create an AdConfig object
+    AdConfig adConfig = new AdConfig ("http://mobile.smartadserver.com", 57477, "(image_interstitial)", 12167, true, "");
+
+When the ```AdConfig``` object is created, the interstitial can be loaded and events can be registered to know when the ad is available or if the ad loading has failed:
+
+    // Load an ad
+    _interstitialView.LoadAd (adConfig);
+
+		// Register success & failure events
+		_interstitialView.AdViewLoadingSuccess += InterstitialViewSuccess;
+		_interstitialView.AdViewLoadingFailure += InterstitialViewFailure;
+
+Contrary to the ```BannerView```, the ```InterstitialView``` is automatically displayed in fullscreen as soon as the ad is loaded.
+
+## AdView instance destruction
+
+Since ```AdView``` instances represents low level objects, you must destroy them manually when you are not using them anymore (this is true for both ```BannerView``` and ```InterstitialView```). The instance destruction is done using the ```Destroy``` method:
+
+    // Destroying an InterstitialView instance
+    _interstitialView.Destroy ();
+
+If you don't call Destroy on all your unused ```AdView``` instances, **you might experiences crashes and memory leaks**!
