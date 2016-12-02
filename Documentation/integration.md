@@ -2,7 +2,7 @@
 
 > **WARNING**
 
->_Temporary documentation, please refer to the official documentation for now_
+> _Temporary documentation, please refer to the official documentation for now_
 
 ## 1. Adding the adapter into an existing project
 
@@ -14,11 +14,15 @@ To simplify this step, you can export the whole _Plugins_ directory as an _Unity
   <img src="Images/package_export.png" alt="Exporting the Plugins directory as an Unity Package"/>
 </p>
 
-A _Unity Package_ can be imported into another project by double clicking it when the project you want to import them into is open.
+A _Unity Package_ can be imported into another project by double clicking on it from the _Explorer_ / _Finder_ (the project you want to import it into must be open).
 
 ## 2. Displaying an ad
 
-_TODO_
+Ads are handled by native SDK using the _Unity's Native Plugin_ mechanism. But the app can instantiate and manipulate banners and interstitials directly through C# objects, that provide a simple and universal API to load them and display them.
+
+The base object used to handle ads is the ```AdView``` class. However you will never use this class directly and use instead ```BannerView``` and ```InterstitialView``` depending of the kind of ad you want to display.
+
+> You can see a complete example on how to implement a banner and an interstitial in your app in the ```GameController.cs``` script of the sample.
 
 ### Banner
 
