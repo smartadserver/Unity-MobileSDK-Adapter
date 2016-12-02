@@ -67,3 +67,11 @@ This sample relies on a **C wrapper** that will instantiate, configure and displ
 Every ```SASAdView``` instances created in the _C wrapper_ is associated with an **ID** which will be returned to the ```iOSNativeAdView``` _Unity_ class.
 
 The number of valid _IDs_ is fixed in the current _C wrapper_ implementation. This will probably be changed in a future version: in the meantime, if you want to change the number of _IDs_, you can edit the variable ```MAX_AD_VIEW``` in the file ```SmartImpl.mm```.
+
+## Adding an unsupported method call to the adapter
+
+> *TODO*
+
+## Adding support for a new platform
+
+> *TODO*
