@@ -1,9 +1,5 @@
 # Integration guide
 
-> **WARNING**
-
-> _Temporary documentation, please refer to the official documentation for now_
-
 ## Adding the adapter into an existing project
 
 You can integrate the _Unity Adapter_ into you project by simply merging the ```Assets/Plugins``` directory found in this repository into your own _Assets_ directory. This directory contains all files necessary to display ads on _Android_ & _iOS_, included _Smart AdServer_ SDK for both platforms.
