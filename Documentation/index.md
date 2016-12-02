@@ -20,7 +20,7 @@ If you you are looking for help to integrate the current _Unity Adapter_ into yo
 
 ## 3. Implementation
 
-The Unity adapter is designed to be extended. You might want to add more features or to expand it to other platforms.
+The _Unity Adapter_ is designed to be extended. You might want to add more features or to expand it to other platforms.
 
 This section describes the architecture of the adapter, the specificity of each platform integration and contains a quick guide on how to add support for another platform.
 
