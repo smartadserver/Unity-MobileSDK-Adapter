@@ -82,4 +82,12 @@ If you need to call a method of the SDK that is not handled by the adapter, you 
 
 ## Adding support for a new platform
 
-> *TODO*
+You may want to call ads on another platform (for instance using direct calls to the API or web creatives). You can add support for another platform supported by _Unity_ by following these steps:
+
+1. Add a new implementation of the abstract class ```NativeAdView```. If you are calling native code from this platform, remember to surround it with conditional preprocessor instructions like ```#if #endif``` or your project will not build anymore on other platforms.
+
+2. Add a new implementation of the abstract class ```NativeAdViewBuilder```. This class will only be used to instantiate an instance of your native ad view.
+
+3. Add your new builder as a case for the switch that you'll find in the ```ConfigurePlatform``` method.
+
+The adapter will now call your native ad view when running on the right platform. If you forgot anything, the ```DefaultNativeAdView``` will be called instead (this class only displays console logs).
