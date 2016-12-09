@@ -70,7 +70,15 @@ The number of valid _IDs_ is fixed in the current _C wrapper_ implementation. Th
 
 ## Adding an unsupported method call to the adapter
 
-> *TODO*
+If you need to call a method of the SDK that is not handled by the adapter, you can add it yourself:
+
+1. Add the abstract method you need in the ```NativeAdView``` class.
+
+2. Add the method implementation for each implementation of ```NativeAdView``` (```AndroidNativeAdView``` and ```iOSNativeAdView``` for now). Check _Interacting with Java classes from Unity_ and _Interacting with ObjC code from Unity_ if you need more informations on how to develop and native implementation for each plaform.
+
+3. Add the method in ```AdView```, in ```BannerView``` or in ```InterstitialView``` depending if the method will be used on banners, on interstitials or on both.
+
+4. The newly created ```AdView``` method should then get the native ad view using ```GetNativeAdView()``` and call the newly created method.
 
 ## Adding support for a new platform
 
