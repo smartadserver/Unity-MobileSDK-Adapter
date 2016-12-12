@@ -63,9 +63,9 @@ When the ```AdConfig``` object is created, the interstitial can be loaded and ev
     // Load an ad
     _interstitialView.LoadAd (adConfig);
 
-		// Register success & failure events
-		_interstitialView.AdViewLoadingSuccess += InterstitialViewSuccess;
-		_interstitialView.AdViewLoadingFailure += InterstitialViewFailure;
+	// Register success & failure events
+	_interstitialView.AdViewLoadingSuccess += InterstitialViewSuccess;
+	_interstitialView.AdViewLoadingFailure += InterstitialViewFailure;
 
 Contrary to the ```BannerView```, the ```InterstitialView``` is automatically displayed in fullscreen as soon as the ad is loaded.
 
