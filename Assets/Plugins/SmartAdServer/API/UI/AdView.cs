@@ -107,7 +107,7 @@ namespace SmartAdServer.Unity.Library.UI
 		{
 			Debug.Log ("SmartAdServer.Unity.Library.UI.AdView: NativeAdViewLoadingSuccess");
 			if (AdViewLoadingSuccess != null) {
-				AdViewLoadingSuccess (this, new EventArgs ());
+				AdViewLoadingSuccess (this, EventArgs.Empty);
 			}
 		}
 
@@ -120,7 +120,7 @@ namespace SmartAdServer.Unity.Library.UI
 		{
 			Debug.Log ("SmartAdServer.Unity.Library.UI.AdView: NativeAdViewLoadingFailure");
 			if (AdViewLoadingFailure != null) {
-				AdViewLoadingFailure (this, new EventArgs ());
+				AdViewLoadingFailure (this, EventArgs.Empty);
 			}
 		}
 
