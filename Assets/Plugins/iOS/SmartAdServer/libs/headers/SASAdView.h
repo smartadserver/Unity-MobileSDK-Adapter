@@ -12,8 +12,8 @@
 #import "SASAdViewDelegate.h"
 
 #define kSASSDKName							@"SDKiOS"
-#define kSASSDKVersion						@"6.5"
-#define kSASSDKRev                          @"65343132616361633966313530643539663064333735323866346238613539653264333437633931"
+#define kSASSDKVersion						@"6.6"
+#define kSASSDKRev                          @"64663237363936663730313632333933653534363138623331303139626335616536333730663562"
 
 #define kSASCloseLinearMessage				@"closeLinear"
 
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, SASLoader) {
  
  The delegate must adopt the SASAdViewDelegate protocol.
  
- @warning *Important* : The delegate is not retained by the SASAdView, so you need to set the ad's delegate to nil before the delegate is released.
+ @warning *Important*: The delegate is not retained by the SASAdView, so you need to set the ad's delegate to nil before the delegate is released.
  
  */
 
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, SASLoader) {
  
  It must not be nil otherwise most post click interaction will not be able to work properly (post click modal, StoreKit, ???).
  
- @warning *Important* : The modal parent view controller is not retained by the SASAdView, so you need to set it to nil before it is released.
+ @warning *Important*: The modal parent view controller is not retained by the SASAdView, so you need to set it to nil before it is released.
  
  */
 
@@ -158,6 +158,20 @@ typedef NS_ENUM(NSInteger, SASLoader) {
 + (void)setLocation:(nonnull CLLocation *)location;
 
 
+/** Enable / Disable automatic location detection by the SDK. 
+ 
+ Default: enabled.
+ 
+ Passing NO to this method will disable the automatic location detection by the SDK.
+ Passing YES or leaving it to default will allow the SDK to check for the Location Permission, and if the permission is already granted, to request the user's current location everytime the app enters foreground.
+ NB: the SDK will never ASK for the location permission on its own, it only checks whether the permission is granted or not.
+
+ You can override the location detected automatically by using the setLocation: method.
+ 
+ */
++ (void)setAllowAutomaticLocationDetection:(BOOL)allow;
+
+
 /** Specifies the device's heading.
  
  Use this method if you want to provide heading to the creative, through the MRAID getHeading() method.
@@ -231,7 +245,7 @@ typedef NS_ENUM(NSInteger, SASLoader) {
 
 /** Handle custom URLs for LivePreview.
  
- DOC TO BE COMPLETED
+ @param url The URL that opened the app.
  
  */
 

@@ -20,7 +20,7 @@
  
  */
 
-@class SASAdView, SASAd;
+@class SASAdView, SASAd, SASReward;
 
 @protocol SASAdViewDelegate <NSObject>
 
@@ -402,5 +402,19 @@
  */
 
 - (void)adView:(nonnull SASAdView *)adView didSendVideoEvent:(SASVideoEvent)videoEvent;
+
+#pragma mark - Rewarded Video
+
+/** Notifies the delegate that the user should be rewarded for watching a video.
+ 
+ Implement this method if you want to use the Rewarded Video feature.
+ Check the properties of the SASReward object to design your response to this method.
+ 
+ @param adView The ad view that collected the reward.
+ @param reward The SASReward object collected. See its documentation to know the available properties.
+ 
+ */
+
+- (void)adView:(nonnull SASAdView *)adView didCollectReward:(nonnull SASReward *)reward;
 
 @end

@@ -227,4 +227,17 @@ typedef NS_ENUM(NSInteger, SASNativeType) {
 
 - (void)unregisterViews;
 
+
+/** Returns a string which contains useful informations about the ad. This string can be sent to the Smart AdServer support
+ to improve bug resolution if the issue is related to a given ad, or can be used with your app crash reporting tool to analyze
+ crash sources.
+ 
+ @warning The string content and format is not guaranted to stay the same: you should avoid parsing it.
+ 
+ @return the debug string
+ 
+ */
+
+- (nonnull NSString *)debugString;
+
 @end
