@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 using SmartAdServer.Unity.Library.Models;
+using SmartAdServer.Unity.Library.Events;
 using SmartAdServer.Unity.Library.UI;
 
 public class GameController : MonoBehaviour
@@ -117,6 +118,7 @@ public class GameController : MonoBehaviour
 		// Register success & failure events
 		_rewardedInterstitialView.AdViewLoadingSuccess += RewardedInterstitialViewSuccess;
 		_rewardedInterstitialView.AdViewLoadingFailure += RewardedInterstitialViewFailure;
+		_rewardedInterstitialView.AdViewRewardReceived += RewardedInterstitialViewRewardReceived;
 		// TODO reward event
 	}
 	
@@ -155,6 +157,15 @@ public class GameController : MonoBehaviour
 	{
 		// Event called when the interstitial fails to load
 		Debug.Log ("GameController: RewardedInterstitialViewFailure");
+	}
+
+	void RewardedInterstitialViewRewardReceived (object sender, System.EventArgs e)
+	{
+		RewardReceivedEventArgs rewardReceivedEventArgs = (RewardReceivedEventArgs)e;
+
+		// Event called when the user has collected a reward by watching the ad.
+		// You can get more information about the reward (the currency and the amount) using the event args object.
+		Debug.Log ("GameController: RewardedInterstitialViewRewardReceived");
 	}
 
 	public void ActualReloading ()

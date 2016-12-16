@@ -28,6 +28,11 @@ namespace SmartAdServer.Unity.Library.UI
 		public event EventHandler AdViewLoadingFailure;
 
 		/// <summary>
+		/// Occurs when ad view received a reward after a completed video playback.
+		/// </summary>
+		public event EventHandler AdViewRewardReceived;
+
+		/// <summary>
 		/// Instance representing a native ad view.
 		/// </summary>
 		protected NativeAdView NativeAdView;
