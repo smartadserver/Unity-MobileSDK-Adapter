@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
 	private int _score = 0;
 	public Text ReloadText;
 	public Button ReloadButton;
+	public Button RewardButton;
 	public Text EndText;
 
 	private bool _gameOver = false;
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
 
 	private BannerView _bannerView;
 	private InterstitialView _interstitialView;
+	private InterstitialView _rewardedInterstitialView;
 
 	void Start ()
 	{
@@ -96,6 +98,27 @@ public class GameController : MonoBehaviour
 		_interstitialView.AdViewLoadingSuccess += InterstitialViewSuccess;
 		_interstitialView.AdViewLoadingFailure += InterstitialViewFailure;
 	}
+
+	void DisplayRewardedInterstitial ()
+	{
+		Debug.Log ("GameController: DisplayRewardedInterstitial");
+
+		// Destroy the old interstitialview if needed
+		if (_rewardedInterstitialView != null) {
+			_rewardedInterstitialView.Destroy ();
+		}
+		// Create a new interstitialview instance
+		_rewardedInterstitialView = new InterstitialView ();
+
+		// Create an adconfig object that will store informations about the ad placement and use it to load the ad
+		AdConfig adConfig = new AdConfig ("https://mobile.smartadserver.com", 104808, "663264", 12167, true, "");
+		_rewardedInterstitialView.LoadAd (adConfig); // The interstitial is displayed automatically when loaded
+
+		// Register success & failure events
+		_rewardedInterstitialView.AdViewLoadingSuccess += RewardedInterstitialViewSuccess;
+		_rewardedInterstitialView.AdViewLoadingFailure += RewardedInterstitialViewFailure;
+		// TODO reward event
+	}
 	
 	void BannerViewSuccess (object sender, System.EventArgs e)
 	{
@@ -122,6 +145,18 @@ public class GameController : MonoBehaviour
 		Debug.Log ("GameController: InterstitialViewFailure");
 	}
 
+	void RewardedInterstitialViewSuccess (object sender, System.EventArgs e)
+	{
+		// Event called when the interstitial is loaded successfuly
+		Debug.Log ("GameController: RewardedInterstitialViewSuccess");
+	}
+
+	void RewardedInterstitialViewFailure (object sender, System.EventArgs e)
+	{
+		// Event called when the interstitial fails to load
+		Debug.Log ("GameController: RewardedInterstitialViewFailure");
+	}
+
 	public void ActualReloading ()
 	{
 		// Do not forget to destroy any instanciated ad view when you don't need them anymore
@@ -132,8 +167,16 @@ public class GameController : MonoBehaviour
 		if (_interstitialView != null) {
 			_interstitialView.Destroy ();
 		}
+		if (_rewardedInterstitialView != null) {
+			_rewardedInterstitialView.Destroy ();
+		}
 
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void GetReward ()
+	{
+		DisplayRewardedInterstitial ();
 	}
 
 	public void AddScore (int newScoreValue)
@@ -182,6 +225,7 @@ public class GameController : MonoBehaviour
 			ReloadText.enabled = true;
 		} else {
 			ReloadButton.gameObject.SetActive (true);
+			RewardButton.gameObject.SetActive (true);
 		}
 		_reload = true;
 	}
@@ -202,6 +246,7 @@ public class GameController : MonoBehaviour
 	{
 		ReloadText.enabled = false;
 		ReloadButton.gameObject.SetActive (false);
+		RewardButton.gameObject.SetActive (false);
 		EndText.enabled = false;
 	}
 }
