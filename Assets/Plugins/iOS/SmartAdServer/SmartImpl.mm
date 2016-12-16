@@ -11,6 +11,7 @@
 #import "SASBannerView.h"
 #import "SASInterstitialView.h"
 #import "SASAdView.h"
+#import "SASReward.h"
 
 // Maximum number of ad views that can be handled by the native wrapper.
 #define MAX_AD_VIEW       100
@@ -31,6 +32,10 @@
 @property (nonatomic) BOOL isLoaded;
 @property (nonatomic) BOOL isFailed;
 
+@property (nonatomic) BOOL hasReward;
+@property (nonatomic) double rewardAmount;
+@property (nonatomic) NSString *rewardCurrency;
+
 @end
 
 
@@ -42,6 +47,7 @@
     _adId = adId;
     _isLoaded = NO;
     _isFailed = NO;
+    _hasReward = NO;
   }
   return self;
 }
@@ -63,6 +69,13 @@
   self.isFailed = YES;
 }
 
+- (void)adView:(SASAdView *)adView didCollectReward:(SASReward *)reward {
+  NSLog(@"AdView %d did collect reward %@", self.adId, reward);
+  _hasReward = YES;
+  _rewardAmount = [reward.amount doubleValue];
+  _rewardCurrency = reward.currency;
+}
+
 @end
 
 
@@ -71,6 +84,18 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 extern "C" {
+
+  // Utils function to copy string on the heap before returning them to Unity
+  char *MakeStringCopy (const char *string)
+  {
+      if (string == NULL) {
+        return NULL;
+      }
+
+      char *res = (char *)malloc(strlen(string) + 1);
+      strcpy(res, string);
+      return res;
+  }
 
   // Tables to hold the ad view instances
   SASAdView *adViews[MAX_AD_VIEW];
@@ -120,6 +145,18 @@ extern "C" {
 
   int _CheckForFailedDelegate(int adId) {
     return delegates[adId].isFailed ? 1 : 0;
+  }
+
+  int _CheckForRewardDelegate(int adId) {
+    return delegates[adId].hasReward ? 1 : 0;
+  }
+
+  const char *_RetrieveRewardCurrency(int adId) {
+    return MakeStringCopy([delegates[adId].rewardCurrency UTF8String]);
+  }
+
+  double _RetrieveRewardAmount(int adId) {
+    return delegates[adId].rewardAmount;
   }
 
   void _DisplayBanner(int adId, int position) {
