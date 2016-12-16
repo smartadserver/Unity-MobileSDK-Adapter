@@ -67,6 +67,11 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		public event EventHandler NativeAdViewLoadingFailure;
 
 		/// <summary>
+		/// Occurs when native ad view has sent a reward.
+		/// </summary>
+		public event EventHandler NativeAdViewRewardReceived;
+
+		/// <summary>
 		/// Current ad type.
 		/// </summary>
 		protected AdType Type;
@@ -86,7 +91,7 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		protected void NotifyLoadingSuccess ()
 		{
 			if (NativeAdViewLoadingSuccess != null) {
-				NativeAdViewLoadingSuccess (this, new EventArgs ());
+				NativeAdViewLoadingSuccess (this, EventArgs.Empty);
 			}
 		}
 
@@ -96,7 +101,18 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		protected void NotifyLoadingFailure ()
 		{
 			if (NativeAdViewLoadingFailure != null) {
-				NativeAdViewLoadingFailure (this, new EventArgs ());
+				NativeAdViewLoadingFailure (this, EventArgs.Empty);
+			}
+		}
+
+		/// <summary>
+		/// Notifies the reception of a reward.
+		/// </summary>
+		/// <param name="e">The description of the reward (currency, amount).</param>
+		protected void NotifyRewardReceived (EventArgs e)
+		{
+			if (NativeAdViewRewardReceived != null) {
+				NativeAdViewRewardReceived (this, e);
 			}
 		}
 

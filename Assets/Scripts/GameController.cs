@@ -119,7 +119,6 @@ public class GameController : MonoBehaviour
 		_rewardedInterstitialView.AdViewLoadingSuccess += RewardedInterstitialViewSuccess;
 		_rewardedInterstitialView.AdViewLoadingFailure += RewardedInterstitialViewFailure;
 		_rewardedInterstitialView.AdViewRewardReceived += RewardedInterstitialViewRewardReceived;
-		// TODO reward event
 	}
 	
 	void BannerViewSuccess (object sender, System.EventArgs e)
@@ -161,11 +160,12 @@ public class GameController : MonoBehaviour
 
 	void RewardedInterstitialViewRewardReceived (object sender, System.EventArgs e)
 	{
-		RewardReceivedEventArgs rewardReceivedEventArgs = (RewardReceivedEventArgs)e;
+		var rewardReceivedEventArgs = (RewardReceivedEventArgs)e;
 
 		// Event called when the user has collected a reward by watching the ad.
 		// You can get more information about the reward (the currency and the amount) using the event args object.
 		Debug.Log ("GameController: RewardedInterstitialViewRewardReceived");
+		Debug.Log ("Reward Info: " + rewardReceivedEventArgs.Amount + " " + rewardReceivedEventArgs.Currency);
 	}
 
 	public void ActualReloading ()

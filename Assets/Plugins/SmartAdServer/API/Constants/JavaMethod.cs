@@ -23,9 +23,13 @@ namespace SmartAdServer.Unity.Library.Constants
 		public static readonly string SetUnityModeEnabled = "setUnityModeEnabled";
 		public static readonly string LoadAd = "loadAd";
 		public static readonly string OnDestroy = "onDestroy";
+		public static readonly string AddRewardListener = "addRewardListener";
 
 		public static readonly string SetExpandParentContainer = "setExpandParentContainer";
 		public static readonly string SetLoaderView = "setLoaderView";
+
+		public static readonly string GetAmount = "getAmount";
+		public static readonly string GetCurrency = "getCurrency";
 	}
 }
 

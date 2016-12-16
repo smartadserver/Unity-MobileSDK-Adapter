@@ -16,6 +16,7 @@ namespace SmartAdServer.Unity.Library.Constants
 		// Smart AdServer
 		public static readonly string SASAdView = JavaPackage.Ui + "/SASAdView";
 		public static readonly string SASAdViewAdResponseHandler = JavaPackage.Ui + "/SASAdView$AdResponseHandler";
+		public static readonly string SASAdViewOnRewardListener = JavaPackage.Ui + "/SASAdView$OnRewardListener";
 		public static readonly string SASBannerView = JavaPackage.Base + "/SASBannerView";
 		public static readonly string SASInterstitialView = JavaPackage.Base + "/SASInterstitialView";
 		public static readonly string SASRotatingImageLoader = JavaPackage.Ui + "/SASRotatingImageLoader";
