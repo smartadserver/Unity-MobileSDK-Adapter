@@ -112,7 +112,7 @@ namespace SmartAdServer.Unity.Library.UI
 		{
 			Debug.Log ("SmartAdServer.Unity.Library.UI.AdView: NativeAdViewLoadingSuccess");
 			if (AdViewLoadingSuccess != null) {
-				AdViewLoadingSuccess (this, EventArgs.Empty);
+				AdViewLoadingSuccess (this, e);
 			}
 		}
 
@@ -125,7 +125,20 @@ namespace SmartAdServer.Unity.Library.UI
 		{
 			Debug.Log ("SmartAdServer.Unity.Library.UI.AdView: NativeAdViewLoadingFailure");
 			if (AdViewLoadingFailure != null) {
-				AdViewLoadingFailure (this, EventArgs.Empty);
+				AdViewLoadingFailure (this, e);
+			}
+		}
+
+		/// <summary>
+		/// Event called when the ad has sent a reward for the user
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">The description of the reward (currency, amount).</param>
+		void NativeAdViewRewardReceived(object sender, EventArgs e)
+		{
+			Debug.Log ("SmartAdServer.Unity.Library.UI.AdView: NativeAdViewRewardReceived");
+			if (AdViewRewardReceived != null) {
+				AdViewRewardReceived (this, e);
 			}
 		}
 
@@ -146,6 +159,7 @@ namespace SmartAdServer.Unity.Library.UI
 				// Registering events
 				NativeAdView.NativeAdViewLoadingSuccess += NativeAdViewLoadingSuccess;
 				NativeAdView.NativeAdViewLoadingFailure += NativeAdViewLoadingFailure;
+				NativeAdView.NativeAdViewRewardReceived += NativeAdViewRewardReceived;
 			}
 			return NativeAdView;
 		}

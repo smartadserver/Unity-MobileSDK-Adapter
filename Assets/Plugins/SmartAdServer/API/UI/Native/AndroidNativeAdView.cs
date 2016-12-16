@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 
 using SmartAdServer.Unity.Library.Constants;
+using SmartAdServer.Unity.Library.Events;
 using SmartAdServer.Unity.Library.Models;
 
 namespace SmartAdServer.Unity.Library.UI.Native
@@ -136,6 +137,8 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		void LoadAdOnUiThread ()
 		{
 			Debug.Log ("SmartAdServer.Unity.Library.UI.Native.AndroidNativeAdView: loading ad…");
+
+			// Make the actual ad call with a listener to retrieve the response
 			GetAdViewObject ().Call (
 				JavaMethod.LoadAd,
 				_currentAdConfig.SiteId,
@@ -144,6 +147,12 @@ namespace SmartAdServer.Unity.Library.UI.Native
 				_currentAdConfig.Master,
 				_currentAdConfig.Target,
 				new AdResponseHandler (this)
+			);
+
+			// Add a reward listener in case the ad wants to send one the user
+			GetAdViewObject ().Call (
+				JavaMethod.AddRewardListener,
+				new OnRewardHandler (this)
 			);
 		}
 
@@ -206,6 +215,30 @@ namespace SmartAdServer.Unity.Library.UI.Native
 			string toString ()
 			{
 				return "AdResponseHandler " + this;
+			}
+		}
+
+		class OnRewardHandler : AndroidJavaProxy
+		{
+			AndroidNativeAdView callerAdView;
+
+			public OnRewardHandler (AndroidNativeAdView adView) : base(JavaClass.SASAdViewOnRewardListener)
+			{
+				callerAdView = adView;
+			}
+
+			void onReward (AndroidJavaObject reward)
+			{
+				// The reward needs to be converted into a C# event args before being sent back to the app
+				Double amount = reward.Call<Double> (JavaMethod.GetAmount);
+				String currency = reward.Call<String> (JavaMethod.GetCurrency);
+
+				callerAdView.NotifyRewardReceived (new RewardReceivedEventArgs (currency, amount));
+			}
+
+			string toString ()
+			{
+				return "OnRewardHandler " + this;
 			}
 		}
 
