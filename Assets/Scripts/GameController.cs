@@ -271,11 +271,21 @@ public class GameController : MonoBehaviour
 	{
 		_rewardedDescription.text = "You won " + reward.Amount + " " + reward.Currency + "!";
 		_rewardedPanel.SetActive (true);
+
+		// The banner is hidden when the panel is displayed because the banner is on top of the game
+		if (_bannerView != null) {
+			_bannerView.SetVisible (false);
+		}
 	}
 
 	public void HideRewardedPanel()
 	{
 		_rewardedPanel.SetActive (false);
+
+		// The banner visibility is restored if it exists
+		if (_bannerView != null) {
+			_bannerView.SetVisible (true);
+		}
 	}
 
 }

@@ -12,6 +12,7 @@ namespace SmartAdServer.Unity.Library.Constants
 		public static readonly string GetResources = "getResources";
 		public static readonly string GetDisplayMetrics = "getDisplayMetrics";
 		public static readonly string AddContentView = "addContentView";
+		public static readonly string SetVisibility = "setVisibility";
 		
 		public static readonly string RunOnUiThread = "runOnUiThread";
 		public static readonly string CurrentActivity = "currentActivity";

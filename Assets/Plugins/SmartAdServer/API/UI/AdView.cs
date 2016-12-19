@@ -96,6 +96,15 @@ namespace SmartAdServer.Unity.Library.UI
 			}
 		}
 
+		/// <summary>
+		/// Show or hide an ad view.
+		/// </summary>
+		/// <param name="visible"><c>true</c> to show the ad view, <c>false</c> to hide it.</param>
+		public void SetVisible(bool visible)
+		{
+			GetNativeAdView ().SetVisible (visible);
+		}
+
 		
 		////////////////////////////////////
 		// Private fields
