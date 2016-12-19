@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
 	public Button RewardButton;
 	public Text EndText;
 
+	public GameObject _rewardedPanel;
+	public Text _rewardedDescription;
+
 	private bool _gameOver = false;
 	private bool _reload = false;
 	private bool _isAdReady = false;
@@ -35,6 +38,7 @@ public class GameController : MonoBehaviour
 	void Start ()
 	{
 		HideGameOverText ();
+		HideRewardedPanel ();
 		UpdateScore ();
 		StartCoroutine (SpawnWaves ());
 
@@ -166,6 +170,8 @@ public class GameController : MonoBehaviour
 		// You can get more information about the reward (the currency and the amount) using the event args object.
 		Debug.Log ("GameController: RewardedInterstitialViewRewardReceived");
 		Debug.Log ("Reward Info: " + rewardReceivedEventArgs.Amount + " " + rewardReceivedEventArgs.Currency);
+
+		ShowRewardedPanel (rewardReceivedEventArgs);
 	}
 
 	public void ActualReloading ()
@@ -260,4 +266,16 @@ public class GameController : MonoBehaviour
 		RewardButton.gameObject.SetActive (false);
 		EndText.enabled = false;
 	}
+
+	void ShowRewardedPanel(RewardReceivedEventArgs reward)
+	{
+		_rewardedDescription.text = "You won " + reward.Amount + " " + reward.Currency + "!";
+		_rewardedPanel.SetActive (true);
+	}
+
+	public void HideRewardedPanel()
+	{
+		_rewardedPanel.SetActive (false);
+	}
+
 }
