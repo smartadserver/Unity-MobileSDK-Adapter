@@ -77,3 +77,22 @@ Since ```AdView``` instances represents low level objects, you must destroy them
     _interstitialView.Destroy ();
 
 If you don't call Destroy on all your unused ```AdView``` instances, **you might experiences crashes and memory leaks**!
+
+## Rewarded interstitials
+
+Some interstitials can be set up to reward the user when the ad is viewed until the end. In this case, a reward is sent by the ad view depending on what has been configured in the ad in the _Smart AdServer_ interface. The reward contains:
+
+* an _Amount_, to know how many items the user has won
+* a _Currency_, to know what type of item the user has won.
+
+The event ```AdViewRewardReceived``` is triggered when an user has received a reward. To use this feature, you must register this event:
+
+    _interstitial.AdViewRewardReceived += RewardReceived;
+
+You can cast the ```EventArgs``` to ```RewardReceivedEventArgs``` if you want to extract the _amount_ and the _currency_ of the reward:
+
+    void RewardReceived (object sender, System.EventArgs e)
+	{
+		var reward = (RewardReceivedEventArgs)e;
+		Debug.Log ("Reward Info: " + reward.Amount + " " + reward.Currency);
+	}
