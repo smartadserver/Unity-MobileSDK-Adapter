@@ -53,6 +53,9 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		[DllImport ("__Internal")]
 		private static extern int _DisplayBanner(int adId, int position);
 
+		[DllImport ("__Internal")]
+		private static extern void _ShowAdView(int adId, int show);
+
 
 		public iOSNativeAdView (AdType type) : base(type)
 		{
@@ -113,6 +116,12 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		{
 			Debug.Log ("iOSNativeAdView > SetIsLoggingEnabled(" + enableLogging + ")");
 			// NOT YET IMPLEMENTED
+		}
+
+		override public void SetVisible (bool visible)
+		{
+			Debug.Log ("iOSNativeAdView > SetVisible(" + visible + ")");
+			_ShowAdView (_currentAdView, visible ? 1 : 0);
 		}
 		
 		override public void DisplayBanner (AdPosition adPosition)

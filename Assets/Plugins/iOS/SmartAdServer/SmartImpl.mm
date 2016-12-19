@@ -166,6 +166,12 @@ extern "C" {
     [currentView addSubview:adViews[adId]];
   }
 
+  void _ShowAdView(int adId, int show) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+      adViews[adId].hidden = (show == 0) ? YES : NO;
+    });
+  }
+
   void _ReleaseAdView(int adId) {
     [adViews[adId] removeFromSuperview];
     [adViews[adId] setDelegate:nil];
