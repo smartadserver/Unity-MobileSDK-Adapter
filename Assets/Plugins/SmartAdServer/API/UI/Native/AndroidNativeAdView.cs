@@ -131,11 +131,15 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		void InitializeBannerViewOnUiThread ()
 		{
 			Debug.Log ("SmartAdServer.Unity.Library.UI.Native.AndroidNativeAdView: initializing AdView");
+
 			GetAdViewClass().CallStatic (JavaMethod.SetUnityModeEnabled, true);
 			_adViewObject = new AndroidJavaObject (Type == AdType.Banner ? JavaClass.SASBannerView : JavaClass.SASInterstitialView, GetUnityActivity ());
 
 			if (Type == AdType.Interstitial) {
 				var loader = new AndroidJavaObject (JavaClass.SASRotatingImageLoader, GetUnityActivity ());
+				var blackColor = new AndroidJavaClass (JavaClass.Color).CallStatic<int> (JavaMethod.ParseColor, "#aa000000");
+				loader.Call (JavaMethod.SetBackgroundColor, blackColor); // Set a black overlay for the loader
+
 				_adViewObject.Call (JavaMethod.SetLoaderView, loader);
 			}
 		}

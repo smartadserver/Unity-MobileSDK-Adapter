@@ -13,6 +13,7 @@ namespace SmartAdServer.Unity.Library.Constants
 		public static readonly string Gravity = "android.view.Gravity";
 		public static readonly string FrameLayout = "android.widget.FrameLayout";
 		public static readonly string FrameLayoutLayoutParam = "android.widget.FrameLayout$LayoutParams";
+		public static readonly string Color = "android.graphics.Color";
 
 		// Smart AdServer
 		public static readonly string SASAdView = JavaPackage.Ui + "/SASAdView";
