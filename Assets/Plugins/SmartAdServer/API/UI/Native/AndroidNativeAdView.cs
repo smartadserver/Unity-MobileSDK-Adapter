@@ -103,6 +103,15 @@ namespace SmartAdServer.Unity.Library.UI.Native
 				Debug.LogWarning ("Android SDK Debugging can't be deactivated once it has been enabled!");
 			}
 		}
+
+		override public void SetVisible (bool visible)
+		{
+			Debug.Log ("AndroidNativeAdView > SetVisible(" + visible + ")");
+
+			RunOnJavaUiThread (() => {
+				SetAdViewVisibilityOnUiThread (visible);
+			});
+		}
 		
 		override public void DisplayBanner (AdPosition adPosition)
 		{
@@ -183,6 +192,23 @@ namespace SmartAdServer.Unity.Library.UI.Native
 			frameLayoutParamObject.Set (JavaField.Gravity, gravity | gravityCenterHorizontal);
 			
 			GetUnityActivity ().Call (JavaMethod.AddContentView, GetAdViewObject (), frameLayoutParamObject);
+		}
+
+		/// <summary>
+		/// Sets the ad view visibility.
+		/// </summary>
+		/// <param name="visible">The ad view is visible if <c>true</c>.</param>
+		void SetAdViewVisibilityOnUiThread (bool visible)
+		{
+			// Hide or show the banner
+			var visibilityString = visible ? JavaFlag.Visible : JavaFlag.Invisible;
+			var visibilityFlag = new AndroidJavaClass (JavaClass.View).GetStatic<int> (visibilityString);
+			GetAdViewObject ().Call (JavaMethod.SetVisibility, visibilityFlag);
+
+			// Add the banner to the hierarchy again to prevent an issue where the banner stays hidden
+			if (visible) {
+				DisplayBanner (_currentAdPosition);
+			}
 		}
 
 		

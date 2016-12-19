@@ -9,6 +9,7 @@ namespace SmartAdServer.Unity.Library.Constants
 	public class JavaClass
 	{
 		// Android
+		public static readonly string View = "android.view.View";
 		public static readonly string Gravity = "android.view.Gravity";
 		public static readonly string FrameLayout = "android.widget.FrameLayout";
 		public static readonly string FrameLayoutLayoutParam = "android.widget.FrameLayout$LayoutParams";

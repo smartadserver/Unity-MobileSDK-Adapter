@@ -57,6 +57,12 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		public abstract void SetIsLoggingEnabled (bool enableLogging);
 
 		/// <summary>
+		/// Show or hide the native ad view.
+		/// </summary>
+		/// <param name="visible"><c>true</c> to show the native ad view, <c>false</c> to hide it.</param>
+		public abstract void SetVisible (bool visible);
+
+		/// <summary>
 		/// Occurs when native ad view loading is successful.
 		/// </summary>
 		public event EventHandler NativeAdViewLoadingSuccess;

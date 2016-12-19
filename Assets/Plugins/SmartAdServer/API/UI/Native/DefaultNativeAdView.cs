@@ -47,6 +47,11 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		{
 			Debug.Log ("DefaultNativeAdView > SetIsLoggingEnabled(" + enableLogging + ")");
 		}
+
+		override public void SetVisible (bool visible)
+		{
+			Debug.Log ("DefaultNativeAdView > SetVisible(" + visible + ")");
+		}
 		
 		override public void DisplayBanner (AdPosition adPosition)
 		{
