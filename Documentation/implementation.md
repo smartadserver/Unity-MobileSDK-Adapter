@@ -52,7 +52,7 @@ To display ads on _iOS_, you need to embed the _iOS SDK_ in the ```Assets/Plugin
 * all header files
 * the bundle file
 
-You will also need to import the right frameworks in the app and deactivate _Apple Transport Security_ (since the ad SDK does not support full HTTPS yet).
+You will also need to import the right frameworks in the app and deactivate _Apple Transport Security_ (since third party scripts might not support HTTPS yet).
 
 This is done in the ```iOSPostprocessBuild``` class, through the method ```LinkLibraries``` for the frameworks import and ```DeactivateATS``` for the _Apple Transport Security_ deactivation.
 
@@ -62,7 +62,7 @@ Since _Unity_ does not provide any API to manipulate _iOS_ projects, these two m
 
 It is not possible to manipulate _ObjC_ classes directly from _C#_ code, so you will not be able to instantiate _iOS_ ```SASAdView``` objects from a _Unity_ class like it is done from _Android_.
 
-This sample relies on a **C wrapper** that will instantiate, configure and display the ad view instances into the app. The ```iOSNativeAdView``` _Unity_ class will only be used to call the **C wrapper** functions.
+This sample relies on a **C wrapper** that will instantiate, configure and display the ad view instances into the app. The ```iOSNativeAdView``` _Unity_ class will only be used to call the _C wrapper_ functions.
 
 Every ```SASAdView``` instances created in the _C wrapper_ is associated with an **ID** which will be returned to the ```iOSNativeAdView``` _Unity_ class.
 

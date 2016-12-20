@@ -14,7 +14,7 @@ When the project is run through the _Unity Editor_ or as any build target except
 
 ## 2. Integration
 
-If you you are looking for help to integrate the current _Unity Adapter_ into your project or to load and display an ad, you can find more informations into the integration guide.
+If you are looking for help to integrate the current _Unity Adapter_ into your project or to load and display an ad, you can find more informations into the integration guide.
 
 > [Integration guide](integration.md)
 
@@ -32,6 +32,6 @@ Before opening an issue on _GitHub_ or contacting support, please check that you
 
 > [Frequently asked questions](faq.md)
 
-The _Unity Adapter_ might contains some bugs or known performance issues when displaying ads, you can check all of them here:
+The _Unity Adapter_ might contain some bugs or known performance issues when displaying ads, you can check all of them here:
 
 > [Known issues and improvements needed](known_issues.md)
