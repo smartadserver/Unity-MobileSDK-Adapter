@@ -22,13 +22,13 @@ You can display interstitials and banners without issues on both _Android_ and _
 
 ## 3. The feature _'XXXX'_ from your SDK is missing in this sample?
 
-This sample only shows an simple example of how to make your _Unity_ application interact with native _Smart AdServer SDK_ so only basic features are implemented.
+This sample only shows a simple example of how to make your _Unity_ application interact with native _Smart AdServer SDK_ so only basic features are implemented.
 
 You can expand it quite easily to support the feature you need since all the communication with the native SDK has already been implemented. If you need more informations on how to do that, check the [implementation details](implementation.md) page.
 
 ## 4. Can I use _Smart AdServer_ SDK older than 6.5 with this wrapper?
 
-Older _iOS_SDKs have not been tested with this wrapper so it is not recommended to use them.
+Older _iOS SDKs_ have not been tested with this wrapper so it is not recommended to use them.
 
 Older _Android_ SDKs will not be able to render some advanced formats (like some video formats) due to some incompatible components used: **you cannot use them in Unity**.
 

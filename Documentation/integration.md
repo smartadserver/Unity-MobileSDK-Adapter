@@ -14,7 +14,7 @@ A _Unity Package_ can be imported into another project by double clicking on it 
 
 ## Displaying an ad
 
-Ads are handled by native SDK using the _Unity's Native Plugin_ mechanism. But the app can instantiate and manipulate banners and interstitials directly through C# objects, that provide a simple and universal API to load them and display them.
+Ads are handled by native SDK using the _Unity's Native Plugin_ mechanism. But the app can instantiate and manipulate banners and interstitials directly through C# objects, that provide a simple and universal API to load and display them.
 
 > You can see a complete example on how to implement a banner and an interstitial in your app in the ```GameController.cs``` script of the sample.
 
@@ -76,13 +76,13 @@ Since ```AdView``` instances represents low level objects, you must destroy them
     // Destroying an InterstitialView instance
     _interstitialView.Destroy ();
 
-If you don't call Destroy on all your unused ```AdView``` instances, **you might experiences crashes and memory leaks**!
+If you don't call Destroy on all your unused ```AdView``` instances, **you might experience memory leaks and crashes**!
 
 ## Rewarded interstitials
 
-Some interstitials can be set up to reward the user when the ad is viewed until the end. In this case, a reward is sent by the ad view depending on what has been configured in the ad in the _Smart AdServer_ interface. The reward contains:
+Some interstitials can be set up to reward the user when the ad is viewed until the end. In this case, a reward is sent by the ad view depending on what has been configured on the placement in the _Smart AdServer_ interface. The reward contains:
 
-* an _Amount_, to know how many items the user has won
+* an _Amount_, to know how many items the user has won,
 * a _Currency_, to know what type of item the user has won.
 
 The event ```AdViewRewardReceived``` is triggered when an user has received a reward. To use this feature, you must register this event:
