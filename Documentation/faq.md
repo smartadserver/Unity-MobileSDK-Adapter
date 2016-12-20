@@ -28,7 +28,7 @@ You can expand it quite easily to support the feature you need since all the com
 
 ## 4. Can I use _Smart AdServer_ SDK older than 6.5 with this wrapper?
 
-Older _iOS_SDKs have not been tested with this wrapper so it is not advised to use them.
+Older _iOS_SDKs have not been tested with this wrapper so it is not recommended to use them.
 
 Older _Android_ SDKs will not be able to render some advanced formats (like some video formats) due to some incompatible components used: **you cannot use them in Unity**.
 
