@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
 		_rewardedInterstitialView = new InterstitialView ();
 
 		// Create an adconfig object that will store informations about the ad placement and use it to load the ad
-		AdConfig adConfig = new AdConfig ("https://mobile.smartadserver.com", 94198, "627899", 15140, true, "video-interstitial-rewarded");
+		AdConfig adConfig = new AdConfig ("https://mobile.smartadserver.com", 94198, "627899", 15140, true, "video-interstitial-endcard");
 		_rewardedInterstitialView.LoadAd (adConfig); // The interstitial is displayed automatically when loaded
 
 		// Register success & failure events
