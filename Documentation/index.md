@@ -2,7 +2,9 @@
 
 ## 1. Getting started
 
-To get started, simply checkout this project and open it using the latest version of _Unity_ (tested on *Unity 5.4.0f3*).
+To get started, simply checkout this project and open it using the latest version of _Unity_ (tested on *Unity 5.5.3f1*).
+
+**WARNING: there is a known issue that makes the ads transparent on Android when the project is built using _Unity 5.6.0f3_. We recommend you to stay on _Unity 5.5.3_ until this issue is fixed.**
 
 This project is based on the official _Space Shooter_ tutorial available [in _Unity_ official documentation](https://unity3d.com/learn/tutorials/projects/space-shooter-tutorial). It has been modified to handle accelerometer input, thus making it playable on mobile devices.
 
