@@ -12,8 +12,8 @@
 #import "SASAdViewDelegate.h"
 
 #define kSASSDKName							@"SDKiOS"
-#define kSASSDKVersion						@"6.6"
-#define kSASSDKRev                          @"64663237363936663730313632333933653534363138623331303139626335616536333730663562"
+#define kSASSDKVersion						@"6.6.2"
+#define kSASSDKRev                          @"66353830373230653163303266313664646538663033383363346638643265336361303135386135"
 
 #define kSASCloseLinearMessage				@"closeLinear"
 
