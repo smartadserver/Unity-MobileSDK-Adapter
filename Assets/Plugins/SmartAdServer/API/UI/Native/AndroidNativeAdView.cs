@@ -184,7 +184,7 @@ namespace SmartAdServer.Unity.Library.UI.Native
 		{
 			var gravityString = _currentAdPosition == AdPosition.Top ? JavaFlag.GravityTop : JavaFlag.GravityBottom;
 
-			var matchParentObject = new AndroidJavaClass (JavaClass.FrameLayoutLayoutParam).GetStatic<int> (JavaFlag.MatchParent);
+			int matchParentObject = -1; // MATCH_PARENT equals -1 according to https://developer.android.com/reference/android/view/ViewGroup.LayoutParams.html#MATCH_PARENT
 			
 			var density = GetUnityActivity ().Call<AndroidJavaObject> (JavaMethod.GetResources).Call<AndroidJavaObject> (JavaMethod.GetDisplayMetrics).Get<float> (JavaField.Density);
 
