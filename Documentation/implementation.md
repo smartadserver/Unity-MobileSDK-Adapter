@@ -42,9 +42,17 @@ The class ```AndroidNativeAdView``` from this sample project shows you how to ma
 
 _In this sample, the code to interact with_ Java _classes can be found at ```Assets/Plugins/SmartAdServer/API/UI/Native/AndroidNativeAdView.cs```_
 
-**Note on Unity 5.6:** ads are not visible without doing some modifications on the Unity Player window, activity and on the ```SurfaceView``` used for the rendering.
+### Z-Order issue with UnityActivity since Unity 5.6
+
+Since _Unity 5.6_, ads are not visible without doing some modifications on the Unity Player window, activity and on the ```SurfaceView``` used for the rendering.
 
 This is done by using the ```com.smartadserver.android.library.unity.UnityPlayerActivity``` instead of the default ```UnityPlayerActivity``` by using a custom AndroidManifest.xml. This custom class is provided as a binary in _AndroidUnityLibrary.jar_.
+
+If you want to rebuild a custom version of ```com.smartadserver.android.library.unity.UnityPlayerActivity```, you can do it by using the _Android_ project available in ```AndroidUnityLibrary/``` and running the ```makeJar``` _gradle_ task from _Android Studio_ or from command line by running:
+
+      ./gradlew makeJar
+
+The built library will then be available in ```AndroidUnityLibrary/library/build/outputs/jar/library.jar```.
 
 ## Integration of the iOS SDK
 
