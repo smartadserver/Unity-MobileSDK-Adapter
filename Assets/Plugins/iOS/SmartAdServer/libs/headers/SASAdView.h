@@ -3,7 +3,7 @@
 //  SASAdView.h
 //  SmartAdServer
 //
-//  Created by Cl??mence Laurent on 20/07/12.
+//  Created by Clémence Laurent on 20/07/12.
 //  Copyright (c) 2012 Smart AdServer. All rights reserved.
 //
 
@@ -12,8 +12,8 @@
 #import "SASAdViewDelegate.h"
 
 #define kSASSDKName							@"SDKiOS"
-#define kSASSDKVersion						@"6.6.2"
-#define kSASSDKRev                          @"66353830373230653163303266313664646538663033383363346638643265336361303135386135"
+#define kSASSDKVersion						@"6.7"
+#define kSASSDKRev                          @"35333932616235653062306362633637616663313739633830313835346339343232653265313631"
 
 #define kSASCloseLinearMessage				@"closeLinear"
 
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, SASLoader) {
 
 /** The modal parent view controller is used to present the modal view controller following the ad's click.
  
- It must not be nil otherwise most post click interaction will not be able to work properly (post click modal, StoreKit, ???).
+ It must not be nil otherwise most post click interaction will not be able to work properly (post click modal, StoreKit, …).
  
  @warning *Important*: The modal parent view controller is not retained by the SASAdView, so you need to set it to nil before it is released.
  
@@ -108,6 +108,13 @@ typedef NS_ENUM(NSInteger, SASLoader) {
 
 @property (nonatomic, readonly) unsigned long lastCallTimestamp;
 
+
+/** Whether the ad is displayed using a web view for the rendering.
+ 
+ */
+
+@property (assign, readonly) BOOL webViewRendering;
+
 ///-----------------------------------
 /// @name Global Settings
 ///-----------------------------------
@@ -137,7 +144,7 @@ typedef NS_ENUM(NSInteger, SASLoader) {
 + (void)setBaseURL:(nonnull NSString *)baseURL;
 
 
-/** Specifies the device's location. This object incorporates the geographical coordinates and altitude of the device???s location along with values indicating
+/** Specifies the device's location. This object incorporates the geographical coordinates and altitude of the device’s location along with values indicating
  the accuracy of the measurements and when those measurements were made.
  
  Use this method if you want to provide geo-targeted advertisement.
@@ -227,6 +234,8 @@ typedef NS_ENUM(NSInteger, SASLoader) {
  This transient session ID is used only for insertion capping/linking. It will not be shared with any other apps and will be
  automatically reset frequently.
  
+ @warning This method will have no effect if custom identifier is enabled.
+ 
  */
 
 + (void)setTransientSessionIDEnabled:(BOOL)transientIDEnabled;
@@ -237,10 +246,36 @@ typedef NS_ENUM(NSInteger, SASLoader) {
  Calling this method will cause the UDID to be hashed by the SDK when requesting an advertisement.
  
  @warning By hashing the UDID, Smart AdServer will not get the original value, so it can prevent from interfacing with other partners and applications.
+ @warning This method will have no effect if custom identifier is enabled.
  
  */
 
 + (void)enableIdentifierHashing;
+
+
+/** Disables the hashed mode for the UDID in the ad requests.
+ 
+ @warning This method will have no effect if custom identifier is enabled.
+ 
+ */
+
++ (void)disableIdentifierHashing;
+
+
+/** Enables the custom identifier for the UDID in the ad requests.
+ 
+ Calling this method will cause the UDID to be replaced by the custom identifier you provided when requesting an advertisement.
+ 
+*/
+
++ (void)enableCustomIdentifierWithID:(nonnull NSString *)customID;
+
+
+/** Disables the custom identifier for the UDID in the ad requests.
+ 
+ */
+
++ (void)disableCustomIdentifier;
 
 
 /** Handle custom URLs for LivePreview.
