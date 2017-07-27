@@ -44,6 +44,8 @@ _In this sample, the code to interact with_ Java _classes can be found at ```Ass
 
 ### Z-Order issue with UnityActivity since Unity 5.6
 
+**_This issue has been fixed in Unity 5.6.2. The wrapper still implements the z-order workaround but it is not necessary anymore._**
+
 Since _Unity 5.6_, ads are not visible without doing some modifications on the Unity Player window, activity and on the ```SurfaceView``` used for the rendering.
 
 This is done by using the ```com.smartadserver.android.library.unity.UnityPlayerActivity``` instead of the default ```UnityPlayerActivity``` by using a custom AndroidManifest.xml. This custom class is provided as a binary in _AndroidUnityLibrary.jar_.
